@@ -1,0 +1,26 @@
+# Shoaib — AI Solutions Architect
+
+## Summary
+Shoaib is a self-taught AI Solutions Architect based in Sialkot, Pakistan. He designs
+and deploys "AI Workforces" — teams of specialized AI employees that run sales,
+support, operations, reporting and internal workflows inside small and medium
+businesses, deployed inside tools the business already owns (WhatsApp, CRM, POS, ERP).
+Humans retain approval authority over every important decision the AI Workforce makes.
+
+## Services
+- AI Workforce systems for restaurants, ecommerce, schools, manufacturing, and healthcare
+- Custom AI Workforces for other industries on request
+- Two primary products: KhidmatAI (restaurant sales and operations) and SchoolOS
+  (AI school management for private schools)
+
+## Target markets
+Pakistan, United Arab Emirates, Saudi Arabia, Qatar
+
+## Positioning
+Shoaib explicitly positions as an "AI Solutions Architect" rather than a chatbot or
+automation-tool builder. His work is systems that compound in value over time, tied
+to measurable business outcomes (revenue, cost, hours saved) rather than demos.
+
+## Contact
+Available via the diagnostic funnel on the site — a short questionnaire mapping where
+a business is losing operational hours and whether an AI Workforce is the right fit.
