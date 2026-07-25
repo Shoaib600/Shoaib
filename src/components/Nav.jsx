@@ -13,7 +13,7 @@ export default function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-10 py-5 bg-base/40 backdrop-blur-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 sm:px-10 py-5 bg-base border-b border-accent-muted/10">
       <a href="#top" className="font-display text-cream text-lg font-semibold tracking-tight">
         Shoaib.
       </a>
