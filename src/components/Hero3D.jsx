@@ -30,6 +30,7 @@ function FallbackHero({ progress }) {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ opacity: progress, transition: "opacity 0.15s linear" }}
         />
+        <div className="absolute inset-0 bg-gradient-to-r from-base via-base/75 to-base/10" />
         <div className="absolute inset-0 bg-gradient-to-t from-base via-transparent to-base/40" />
       </div>
       <style>{`
@@ -276,6 +277,13 @@ export default function Hero3D() {
         style={{ height: "100dvh" }}
       >
         {useFallback && <FallbackHero progress={fallbackProgress} />}
+
+        {/* Scrim: text sits on the left, photo interest is center-right.
+            Without this, bright/light areas of the photo (visible now that
+            the lighting bug is fixed) make the text unreadable where they
+            overlap. */}
+        <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-r from-base via-base/75 to-base/10" />
+        <div className="absolute inset-0 z-20 pointer-events-none bg-gradient-to-t from-base/90 via-transparent to-base/30" />
 
         <div className="absolute top-1/2 -translate-y-1/2 left-6 sm:left-16 z-40 max-w-xl pointer-events-none">
           <p className="text-accent text-sm tracking-[0.2em] uppercase mb-3 font-medium">
