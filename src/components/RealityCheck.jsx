@@ -85,7 +85,7 @@ export default function RealityCheck() {
     <section
       id="compare"
       ref={sectionRef}
-      className="bg-base/90 px-6 sm:px-16 py-24 sm:py-32 overflow-hidden"
+      className="bg-base/90 backdrop-blur-sm px-6 sm:px-16 py-24 sm:py-32 overflow-hidden"
     >
       <Reveal>
         <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">Reality check</p>
@@ -110,11 +110,11 @@ export default function RealityCheck() {
               <p className="font-display text-cream text-lg font-medium group-hover:text-accent-light transition-colors">{item.tool}</p>
               <div>
                 <p className="text-accent-muted text-xs uppercase tracking-wide mb-1">What the software does</p>
-                <p className="text-stone text-sm">{item.does}</p>
+                <p className="text-stone text-base">{item.does}</p>
               </div>
               <div>
                 <p className="text-accent-muted text-xs uppercase tracking-wide mb-1">What is still manual</p>
-                <p className="text-stone text-sm">{item.manual}</p>
+                <p className="text-stone text-base">{item.manual}</p>
               </div>
             </div>
           </Reveal>

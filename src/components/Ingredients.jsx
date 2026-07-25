@@ -14,7 +14,7 @@ const INGREDIENTS = [
 
 export default function Ingredients() {
   return (
-    <section id="method" className="bg-panel/90 px-6 sm:px-16 py-24 sm:py-32 overflow-hidden">
+    <section id="method" className="bg-panel/90 backdrop-blur-sm px-6 sm:px-16 py-24 sm:py-32 overflow-hidden">
       <Reveal>
         <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">What is an AI Workforce</p>
         <h2 className="font-display text-cream text-3xl sm:text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
@@ -35,7 +35,7 @@ export default function Ingredients() {
               <h3 className="font-display text-cream text-lg font-medium mt-2 mb-2 transition-transform duration-300 group-hover:translate-x-1">
                 {item.title}
               </h3>
-              <p className="text-stone text-sm leading-relaxed">{item.desc}</p>
+              <p className="text-stone text-base leading-relaxed">{item.desc}</p>
             </div>
           </Reveal>
         ))}

@@ -132,18 +132,16 @@ export default function Hero3D() {
         particleGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
         const particleMat = new THREE.PointsMaterial({
           color: 0x00a8e8,
-          size: 0.025,
+          size: 0.035,
           transparent: true,
-          opacity: 0.55,
+          opacity: 0.7,
         });
         const particles = new THREE.Points(particleGeo, particleMat);
         scene.add(particles);
 
-        const rimLight = new THREE.PointLight(0x6fd8ff, 2.2, 20);
+        const rimLight = new THREE.PointLight(0x6fd8ff, 1.2, 20);
         rimLight.position.set(-3, 2, 4);
         scene.add(rimLight);
-        const fillLight = new THREE.AmbientLight(0x0e1c24, 1.2);
-        scene.add(fillLight);
 
         const loader = new THREE.TextureLoader();
         const texBlack = loader.load(photoBlack);
@@ -153,19 +151,20 @@ export default function Hero3D() {
 
         const planeGeo = new THREE.PlaneGeometry(3.2, 1.8);
 
-        const matBlack = new THREE.MeshStandardMaterial({
+        // MeshBasicMaterial, not MeshStandardMaterial: this is a flat photo,
+        // not a physically-lit surface. Standard material multiplies the
+        // texture by scene light — with a dim ambient that rendered the
+        // photo nearly black. Basic material shows the texture at its
+        // true brightness regardless of scene lighting.
+        const matBlack = new THREE.MeshBasicMaterial({
           map: texBlack,
           transparent: true,
           opacity: 1,
-          roughness: 0.6,
-          metalness: 0.1,
         });
-        const matSilver = new THREE.MeshStandardMaterial({
+        const matSilver = new THREE.MeshBasicMaterial({
           map: texSilver,
           transparent: true,
           opacity: 0,
-          roughness: 0.3,
-          metalness: 0.4,
         });
 
         const planeBlack = new THREE.Mesh(planeGeo, matBlack);
@@ -204,20 +203,24 @@ export default function Hero3D() {
 
           currentProgress += (targetProgress - currentProgress) * 0.08;
 
-          const idleX = Math.sin(t * 0.3) * 0.06;
-          const idleY = Math.cos(t * 0.25) * 0.04;
+          const idleX = Math.sin(t * 0.3) * 0.14;
+          const idleY = Math.cos(t * 0.25) * 0.08;
+          const breathe = 1 + Math.sin(t * 0.4) * 0.015;
 
           planeBlack.rotation.y = idleX - currentProgress * 0.5;
           planeBlack.rotation.x = idleY;
           planeBlack.position.z = currentProgress * -1.5;
+          planeBlack.scale.setScalar(breathe);
           matBlack.opacity = 1 - currentProgress;
 
           planeSilver.rotation.y = idleX + (1 - currentProgress) * 0.3;
           planeSilver.rotation.x = idleY;
           planeSilver.position.z = -0.3 + currentProgress * 0.3;
+          planeSilver.scale.setScalar(breathe);
           matSilver.opacity = currentProgress;
 
-          particles.rotation.y = t * 0.02;
+          particles.rotation.y = t * 0.035;
+          particles.rotation.x = Math.sin(t * 0.15) * 0.05;
           rimLight.position.x = -3 + Math.sin(t * 0.2) * 1.5;
 
           renderer.render(scene, camera);

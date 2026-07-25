@@ -75,7 +75,7 @@ const WORKFORCES = [
 
 export default function Workforces() {
   return (
-    <section id="systems" className="bg-base/90 px-6 sm:px-16 py-24 sm:py-32 overflow-hidden">
+    <section id="systems" className="bg-base/90 backdrop-blur-sm px-6 sm:px-16 py-24 sm:py-32 overflow-hidden">
       <Reveal>
         <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">AI Workforces I build</p>
         <h2 className="font-display text-cream text-3xl sm:text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
@@ -101,12 +101,12 @@ export default function Workforces() {
               <div className="bg-panel/95 rounded-2xl p-8 border border-accent-muted/10 h-full">
                 <p className="text-accent-muted text-xs uppercase tracking-wide mb-2">{wf.industry}</p>
                 <h3 className="font-display text-cream text-2xl font-semibold mb-2">{wf.title}</h3>
-                <p className="text-stone text-sm mb-6">{wf.desc}</p>
+                <p className="text-stone text-base mb-6">{wf.desc}</p>
                 <ul className="space-y-3">
                   {wf.roles.map((role) => {
                     const [name, ...rest] = role.split(" — ");
                     return (
-                      <li key={name} className="text-sm">
+                      <li key={name} className="text-[15px] leading-relaxed">
                         <span className="text-cream font-medium">{name}</span>
                         <span className="text-stone"> — {rest.join(" — ")}</span>
                       </li>

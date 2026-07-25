@@ -14,7 +14,7 @@ export default function Diagnostic() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section id="diagnostic" className="bg-base/90 px-6 sm:px-16 py-24 sm:py-32 overflow-hidden">
+    <section id="diagnostic" className="bg-base/90 backdrop-blur-sm px-6 sm:px-16 py-24 sm:py-32 overflow-hidden">
       <div className="max-w-2xl">
         <Reveal>
           <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">Operations diagnostic</p>
