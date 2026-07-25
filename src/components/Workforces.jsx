@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Reveal from "./Reveal.jsx";
 import TiltCard from "./TiltCard.jsx";
+import CountUp from "./CountUp.jsx";
 
 const WORKFORCES = [
   {
@@ -103,7 +104,8 @@ export default function Workforces() {
         {WORKFORCES.map((wf, i) => (
           <Reveal key={wf.title} delay={(i % 2) * 100}>
             <TiltCard className="h-full">
-              <div className="bg-panel/95 rounded-2xl border border-accent-muted/10 h-full overflow-hidden">
+              <div className="relative bg-panel/95 rounded-2xl border border-accent/20 h-full overflow-hidden shadow-[0_0_25px_-8px_rgba(0,168,232,0.35)]">
+                <div className="absolute -top-10 -right-10 w-40 h-40 bg-accent/20 rounded-full blur-3xl pointer-events-none" />
                 {/* Agent-ID header */}
                 <div className="px-8 pt-8 pb-6 border-b border-accent-muted/10">
                   <div className="flex items-start justify-between mb-4">
@@ -113,14 +115,18 @@ export default function Workforces() {
                       </p>
                       <h3 className="font-display text-cream text-2xl font-semibold">{wf.title}</h3>
                     </div>
-                    <span className="text-[10px] uppercase tracking-wider text-accent border border-accent/40 rounded-full px-2.5 py-1 whitespace-nowrap">
+                    <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-accent border border-accent/40 rounded-full px-2.5 py-1 whitespace-nowrap">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent" />
+                      </span>
                       Live
                     </span>
                   </div>
                   <p className="text-stone text-base mb-5">{wf.desc}</p>
                   <div className="grid grid-cols-3 gap-3 text-center">
                     <div className="bg-base/60 rounded-lg py-2.5">
-                      <p className="text-cream font-display text-lg font-semibold">{wf.roles.length}</p>
+                      <p className="text-cream font-display text-lg font-semibold"><CountUp value={wf.roles.length} /></p>
                       <p className="text-accent-muted text-[10px] uppercase tracking-wide mt-0.5">Roles</p>
                     </div>
                     <div className="bg-base/60 rounded-lg py-2.5">
