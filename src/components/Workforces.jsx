@@ -5,7 +5,8 @@ import TiltCard from "./TiltCard.jsx";
 
 const WORKFORCES = [
   {
-    industry: "Hospitality · Workforce 01",
+    code: "W-01",
+    industry: "Hospitality",
     title: "Restaurant Workforce",
     desc: "Runs the floor, the phone and the WhatsApp orders — every shift, every hour.",
     roles: [
@@ -19,7 +20,8 @@ const WORKFORCES = [
     ],
   },
   {
-    industry: "Ecommerce · Workforce 02",
+    code: "W-02",
+    industry: "Ecommerce",
     title: "Ecommerce Workforce",
     desc: "A full store team — sales, support, ops, returns, marketing — always on.",
     roles: [
@@ -33,7 +35,8 @@ const WORKFORCES = [
     ],
   },
   {
-    industry: "Education · Workforce 03",
+    code: "W-03",
+    industry: "Education",
     title: "School Workforce",
     desc: "The admin office, parent desk and student help desk — running on their own.",
     roles: [
@@ -47,7 +50,8 @@ const WORKFORCES = [
     ],
   },
   {
-    industry: "Manufacturing · Workforce 04",
+    code: "W-04",
+    industry: "Manufacturing",
     title: "Manufacturing Workforce",
     desc: "A control room team for production, purchasing, inventory and quality.",
     roles: [
@@ -60,7 +64,8 @@ const WORKFORCES = [
     ],
   },
   {
-    industry: "Healthcare · Workforce 05",
+    code: "W-05",
+    industry: "Healthcare",
     title: "Healthcare Workforce",
     desc: "A patient-first front desk — bookings, records, follow-ups and billing.",
     roles: [
@@ -98,29 +103,58 @@ export default function Workforces() {
         {WORKFORCES.map((wf, i) => (
           <Reveal key={wf.title} delay={(i % 2) * 100}>
             <TiltCard className="h-full">
-              <div className="bg-panel/95 rounded-2xl p-8 border border-accent-muted/10 h-full">
-                <p className="text-accent-muted text-xs uppercase tracking-wide mb-2">{wf.industry}</p>
-                <h3 className="font-display text-cream text-2xl font-semibold mb-2">{wf.title}</h3>
-                <p className="text-stone text-base mb-6">{wf.desc}</p>
-                <ul className="space-y-3">
-                  {wf.roles.map((role) => {
-                    const [name, ...rest] = role.split(" — ");
-                    return (
-                      <li key={name} className="text-[15px] leading-relaxed">
-                        <span className="text-cream font-medium">{name}</span>
-                        <span className="text-stone"> — {rest.join(" — ")}</span>
-                      </li>
-                    );
-                  })}
-                </ul>
-                <motion.a
-                  href="#diagnostic"
-                  whileHover={{ x: 4 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-block mt-6 text-sm text-accent hover:text-accent-light transition-colors"
-                >
-                  Deploy this workforce →
-                </motion.a>
+              <div className="bg-panel/95 rounded-2xl border border-accent-muted/10 h-full overflow-hidden">
+                {/* Agent-ID header */}
+                <div className="px-8 pt-8 pb-6 border-b border-accent-muted/10">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <p className="text-accent-muted text-xs uppercase tracking-wide mb-1">
+                        {wf.industry} · Badge {wf.code}
+                      </p>
+                      <h3 className="font-display text-cream text-2xl font-semibold">{wf.title}</h3>
+                    </div>
+                    <span className="text-[10px] uppercase tracking-wider text-accent border border-accent/40 rounded-full px-2.5 py-1 whitespace-nowrap">
+                      Live
+                    </span>
+                  </div>
+                  <p className="text-stone text-base mb-5">{wf.desc}</p>
+                  <div className="grid grid-cols-3 gap-3 text-center">
+                    <div className="bg-base/60 rounded-lg py-2.5">
+                      <p className="text-cream font-display text-lg font-semibold">{wf.roles.length}</p>
+                      <p className="text-accent-muted text-[10px] uppercase tracking-wide mt-0.5">Roles</p>
+                    </div>
+                    <div className="bg-base/60 rounded-lg py-2.5">
+                      <p className="text-cream font-display text-lg font-semibold">24/7</p>
+                      <p className="text-accent-muted text-[10px] uppercase tracking-wide mt-0.5">Always on</p>
+                    </div>
+                    <div className="bg-base/60 rounded-lg py-2.5">
+                      <p className="text-cream font-display text-lg font-semibold">✓</p>
+                      <p className="text-accent-muted text-[10px] uppercase tracking-wide mt-0.5">Human approved</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="px-8 py-6">
+                  <ul className="space-y-3">
+                    {wf.roles.map((role) => {
+                      const [name, ...rest] = role.split(" — ");
+                      return (
+                        <li key={name} className="text-[15px] leading-relaxed">
+                          <span className="text-cream font-medium">{name}</span>
+                          <span className="text-stone"> — {rest.join(" — ")}</span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                  <motion.a
+                    href="#diagnostic"
+                    whileHover={{ x: 4 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="inline-block mt-6 text-sm text-accent hover:text-accent-light transition-colors"
+                  >
+                    Deploy this workforce →
+                  </motion.a>
+                </div>
               </div>
             </TiltCard>
           </Reveal>

@@ -1,6 +1,7 @@
 import React, { Suspense, lazy } from "react";
 import Nav from "./components/Nav.jsx";
 import RealityCheck from "./components/RealityCheck.jsx";
+import VerbCycle from "./components/VerbCycle.jsx";
 import Ingredients from "./components/Ingredients.jsx";
 import Workforces from "./components/Workforces.jsx";
 import Principles from "./components/Principles.jsx";
@@ -26,6 +27,7 @@ export default function App() {
       </Suspense>
       <div className="relative z-10">
         <RealityCheck />
+        <VerbCycle />
         <Ingredients />
         <Workforces />
         <Principles />
