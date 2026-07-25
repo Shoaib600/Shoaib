@@ -15,8 +15,8 @@ export default {
         stone: "#93A6AD",
       },
       fontFamily: {
-        display: ["'Space Grotesk'", "sans-serif"],
-        sans: ["'Inter'", "sans-serif"],
+        display: ["'Bricolage Grotesque'", "sans-serif"],
+        sans: ["'Sora'", "sans-serif"],
       },
     },
   },

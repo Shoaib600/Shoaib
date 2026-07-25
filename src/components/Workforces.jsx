@@ -1,4 +1,7 @@
 import React from "react";
+import { motion } from "framer-motion";
+import Reveal from "./Reveal.jsx";
+import TiltCard from "./TiltCard.jsx";
 
 const WORKFORCES = [
   {
@@ -72,47 +75,55 @@ const WORKFORCES = [
 
 export default function Workforces() {
   return (
-    <section id="systems" className="bg-base px-6 sm:px-16 py-24 sm:py-32">
-      <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">AI Workforces I build</p>
-      <h2 className="font-display text-cream text-3xl sm:text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
-        Not one AI tool. An entire department.
-      </h2>
+    <section id="systems" className="bg-base/90 px-6 sm:px-16 py-24 sm:py-32 overflow-hidden">
+      <Reveal>
+        <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">AI Workforces I build</p>
+        <h2 className="font-display text-cream text-3xl sm:text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
+          Not one AI tool. An entire department.
+        </h2>
 
-      <div className="mt-8 inline-flex flex-wrap gap-x-6 gap-y-2 text-xs text-accent-muted border border-accent-muted/30 rounded-full px-5 py-3">
-        <span>Shared memory</span>
-        <span>·</span>
-        <span>Business SOPs</span>
-        <span>·</span>
-        <span>Human approvals</span>
-        <span>·</span>
-        <span>Dashboards</span>
-        <span className="text-stone">— applies to every workforce below</span>
-      </div>
+        <div className="mt-8 inline-flex flex-wrap gap-x-6 gap-y-2 text-xs text-accent-muted border border-accent-muted/30 rounded-full px-5 py-3">
+          <span>Shared memory</span>
+          <span>·</span>
+          <span>Business SOPs</span>
+          <span>·</span>
+          <span>Human approvals</span>
+          <span>·</span>
+          <span>Dashboards</span>
+          <span className="text-stone">— applies to every workforce below</span>
+        </div>
+      </Reveal>
 
       <div className="mt-12 grid gap-6 lg:grid-cols-2">
-        {WORKFORCES.map((wf) => (
-          <div key={wf.title} className="bg-panel rounded-2xl p-8 border border-accent-muted/10">
-            <p className="text-accent-muted text-xs uppercase tracking-wide mb-2">{wf.industry}</p>
-            <h3 className="font-display text-cream text-2xl font-semibold mb-2">{wf.title}</h3>
-            <p className="text-stone text-sm mb-6">{wf.desc}</p>
-            <ul className="space-y-3">
-              {wf.roles.map((role) => {
-                const [name, ...rest] = role.split(" — ");
-                return (
-                  <li key={name} className="text-sm">
-                    <span className="text-cream font-medium">{name}</span>
-                    <span className="text-stone"> — {rest.join(" — ")}</span>
-                  </li>
-                );
-              })}
-            </ul>
-            <a
-              href="#diagnostic"
-              className="inline-block mt-6 text-sm text-accent hover:text-accent-light transition-colors"
-            >
-              Deploy this workforce →
-            </a>
-          </div>
+        {WORKFORCES.map((wf, i) => (
+          <Reveal key={wf.title} delay={(i % 2) * 100}>
+            <TiltCard className="h-full">
+              <div className="bg-panel/95 rounded-2xl p-8 border border-accent-muted/10 h-full">
+                <p className="text-accent-muted text-xs uppercase tracking-wide mb-2">{wf.industry}</p>
+                <h3 className="font-display text-cream text-2xl font-semibold mb-2">{wf.title}</h3>
+                <p className="text-stone text-sm mb-6">{wf.desc}</p>
+                <ul className="space-y-3">
+                  {wf.roles.map((role) => {
+                    const [name, ...rest] = role.split(" — ");
+                    return (
+                      <li key={name} className="text-sm">
+                        <span className="text-cream font-medium">{name}</span>
+                        <span className="text-stone"> — {rest.join(" — ")}</span>
+                      </li>
+                    );
+                  })}
+                </ul>
+                <motion.a
+                  href="#diagnostic"
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.97 }}
+                  className="inline-block mt-6 text-sm text-accent hover:text-accent-light transition-colors"
+                >
+                  Deploy this workforce →
+                </motion.a>
+              </div>
+            </TiltCard>
+          </Reveal>
         ))}
       </div>
 

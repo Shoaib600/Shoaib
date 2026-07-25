@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const LINKS = [
@@ -25,12 +26,15 @@ export default function Nav() {
         ))}
       </div>
 
-      <a
+      <motion.a
         href="#diagnostic"
-        className="hidden md:inline-block text-sm font-medium px-5 py-2 rounded-full bg-accent text-base hover:bg-accent-light transition-colors"
+        whileHover={{ scale: 1.05, boxShadow: "0 8px 24px -8px rgba(0,168,232,0.6)" }}
+        whileTap={{ scale: 0.95, y: 1 }}
+        transition={{ type: "spring", stiffness: 400, damping: 17 }}
+        className="hidden md:inline-block text-sm font-medium px-5 py-2 rounded-full bg-accent text-base"
       >
         Diagnostic
-      </a>
+      </motion.a>
 
       <button
         className="md:hidden text-cream p-2 rounded-full bg-panel border border-accent-muted/40"
@@ -40,27 +44,35 @@ export default function Nav() {
         {open ? <X size={20} /> : <Menu size={20} />}
       </button>
 
-      {open && (
-        <div className="absolute top-full left-0 right-0 md:hidden bg-panel border-t border-accent-muted/30 flex flex-col p-6 gap-4">
-          {LINKS.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              onClick={() => setOpen(false)}
-              className="text-stone hover:text-accent transition-colors text-sm"
-            >
-              {l.label}
-            </a>
-          ))}
-          <a
-            href="#diagnostic"
-            onClick={() => setOpen(false)}
-            className="text-sm font-medium px-5 py-2 rounded-full bg-accent text-base text-center"
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-full left-0 right-0 md:hidden bg-panel border-t border-accent-muted/30 flex flex-col p-6 gap-4"
           >
-            Diagnostic
-          </a>
-        </div>
-      )}
+            {LINKS.map((l) => (
+              <a
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className="text-stone hover:text-accent transition-colors text-sm"
+              >
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#diagnostic"
+              onClick={() => setOpen(false)}
+              className="text-sm font-medium px-5 py-2 rounded-full bg-accent text-base text-center"
+            >
+              Diagnostic
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }

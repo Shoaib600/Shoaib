@@ -1,4 +1,5 @@
 import React from "react";
+import Reveal from "./Reveal.jsx";
 
 const INGREDIENTS = [
   { n: "01", title: "Specialized AI Employees", desc: "Each role — sales, support, reporting, operations — is a distinct AI employee trained for that job. No generic one-bot-does-all." },
@@ -13,24 +14,30 @@ const INGREDIENTS = [
 
 export default function Ingredients() {
   return (
-    <section id="method" className="bg-panel px-6 sm:px-16 py-24 sm:py-32">
-      <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">What is an AI Workforce</p>
-      <h2 className="font-display text-cream text-3xl sm:text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
-        Think of it as hiring a team — not buying software.
-      </h2>
-      <p className="text-stone text-base sm:text-lg mt-6 max-w-2xl leading-relaxed">
-        An AI Workforce is a group of specialized AI employees working
-        together inside your business. They share memory, follow your
-        playbooks, and hand the important decisions back to you.
-      </p>
+    <section id="method" className="bg-panel/90 px-6 sm:px-16 py-24 sm:py-32 overflow-hidden">
+      <Reveal>
+        <p className="text-accent text-sm tracking-[0.2em] uppercase mb-4">What is an AI Workforce</p>
+        <h2 className="font-display text-cream text-3xl sm:text-4xl md:text-5xl font-semibold max-w-2xl leading-tight">
+          Think of it as hiring a team — not buying software.
+        </h2>
+        <p className="text-stone text-base sm:text-lg mt-6 max-w-2xl leading-relaxed">
+          An AI Workforce is a group of specialized AI employees working
+          together inside your business. They share memory, follow your
+          playbooks, and hand the important decisions back to you.
+        </p>
+      </Reveal>
 
       <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {INGREDIENTS.map((item) => (
-          <div key={item.n}>
-            <span className="text-accent-muted text-sm font-display">{item.n}</span>
-            <h3 className="font-display text-cream text-lg font-medium mt-2 mb-2">{item.title}</h3>
-            <p className="text-stone text-sm leading-relaxed">{item.desc}</p>
-          </div>
+        {INGREDIENTS.map((item, i) => (
+          <Reveal key={item.n} delay={(i % 4) * 90}>
+            <div className="group cursor-default">
+              <span className="text-accent-muted text-sm font-display transition-colors group-hover:text-accent">{item.n}</span>
+              <h3 className="font-display text-cream text-lg font-medium mt-2 mb-2 transition-transform duration-300 group-hover:translate-x-1">
+                {item.title}
+              </h3>
+              <p className="text-stone text-sm leading-relaxed">{item.desc}</p>
+            </div>
+          </Reveal>
         ))}
       </div>
     </section>
